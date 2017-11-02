@@ -97,6 +97,7 @@ Begin VB.Form Form2
       _ExtentX        =   8705
       _ExtentY        =   2566
       _Version        =   393217
+      Enabled         =   -1  'True
       ScrollBars      =   2
       DisableNoScroll =   -1  'True
       Appearance      =   0
@@ -167,6 +168,7 @@ Begin VB.Form Form2
       _ExtentX        =   8705
       _ExtentY        =   3836
       _Version        =   393217
+      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       ScrollBars      =   2
       DisableNoScroll =   -1  'True
@@ -683,7 +685,7 @@ Private Sub Comm1_OnComm()
             Else
                 If Len(RichTextBox1.Text) >= 20000 Then RichTextBox1.Text = ""
                 RichTextBox1.SelStart = Len(RichTextBox1.Text)
-                zc = StrConv(tempstr, vbUnicode)
+                zc = BytesToBstr(tempstr)
                 ZC2 = JsRun.Eval("run(""" & Replace(Replace(Replace(zc, Chr(0), ""), Chr(13), ""), Chr(10), "") & """);")
                 If ZC2 <> "" Then
                     Print #SaveTempFile, ZC2
